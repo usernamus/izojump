@@ -42,7 +42,8 @@ table {
   border-spacing: 0;
 }
 #game {
-  width: 400px;
+  overflow: hidden;
+  width: 500px;
   height: 400px;
   margin: 0 auto;
 }

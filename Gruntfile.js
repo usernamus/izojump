@@ -4,10 +4,14 @@ module.exports = function(grunt) {
             all: {
                 files: {
                     'script/game.min.js': [
-                        'src/draw/surface.js',
                         'src/state/preload.js',
                         'src/state/menu.js',
                         'src/state/game.js',
+                        'src/action/jump.js',
+                        'src/action/death.js',
+                        'src/draw/surface.js',
+                        'src/draw/cursor.js',
+                        'src/draw/player.js',
                         'src/izojump.js'
                     ]
                 }

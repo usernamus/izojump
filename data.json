@@ -5,9 +5,15 @@
     },
     "lands": {
         "1_2": "land",
-        "2_1": "land",
         "2_2": "land",
-        "2_3": "land",
-        "3_2": "land"
+        "3_2": "land",
+        "2_1": "land",
+        "2_3": "land"
+    },
+    "player": {
+        "spawn": {
+            "col": 2,
+            "row": 2
+        }
     }
 }

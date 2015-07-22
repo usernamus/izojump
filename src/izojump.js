@@ -1,4 +1,4 @@
-var izojump = new Phaser.Game(400, 400, Phaser.CANVAS, 'game');
+var izojump = new Phaser.Game(1000, 800, Phaser.CANVAS, 'game');
 
 izojump.state.add("preload", preload);
 izojump.state.add("menu", menu);

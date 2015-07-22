@@ -1,31 +1,37 @@
 function draw_surface(ctx) {
-    var c, r, x, y, cell, land;
+    ctx.surface_group = ctx.add.group();
 
-    for (c = 0; c <= ctx.data.surface.col + 1; c += 1) {
-        for (r = 0; r <= ctx.data.surface.row + 1; r += 1) {
-            x = c * 42 + r * 42 - 42;
-            y = c * 21 - r * 21 - 21;
+    var c, r, x, y, link, sprite;
 
-            cell = c + '_' + r;
+    for (c = 0; c <= ctx.data.surface.col + 1; c++) {
+        for (r = 0; r <= ctx.data.surface.row + 1; r++) {
+            x = c * 85 + r * 85;
+            y = c * 43 - r * 43;
 
-            ctx.surface[cell] = {
-                "cell": cell,
+            link = c + '_' + r;
+
+            ctx.surface[link] = {
+                "link": link,
+                "sprite": null,
                 "x": x,
                 "y": y,
-                "land": null,
                 "available": false,
                 "visible": false
             };
 
-            if (ctx.data.lands.hasOwnProperty(cell)) {
-                land = ctx.add.sprite(x, y, ctx.data.lands[cell]);
+            if (ctx.data.lands.hasOwnProperty(link)) {
+                sprite = ctx.add.sprite(x - 85, y - 43, ctx.data.lands[link]);
 
-                ctx.surface[cell].land = land;
-                ctx.surface[cell].available = true;
-                ctx.surface[cell].visible = true;
+                ctx.surface[link].sprite = sprite;
+                ctx.surface[link].available = true;
+                ctx.surface[link].visible = true;
 
-                ctx.surface.add(land);
+                ctx.surface_group.add(sprite);
             }
         }
     }
+
+    ctx.surface_group.sort('y', Phaser.Group.SORT_ASCENDING);
+
+    ctx.universe.add(ctx.surface_group);
 }

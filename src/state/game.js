@@ -3,7 +3,11 @@ var game = function(izojump) {
 
 game.prototype = {
     init: function(info) {
+        this.universe = this.add.group();
         this.surface = {};
+        this.player = {};
+        this.player_location = null;
+
         this.keyboard = true;
     },
     create: function() {
@@ -11,13 +15,12 @@ game.prototype = {
 
         this.data = this.cache.getJSON('data');
 
-        this.surface = this.add.group();
-
         draw_surface(this);
+        draw_cursor(this);
+        draw_player(this);
 
-        this.surface.sort('y', Phaser.Group.SORT_ASCENDING);
-        this.surface.x = this.world.centerX - (this.surface.width * 1.5);
-        this.surface.y = this.world.centerY;
+        this.universe.x = this.world.centerX - this.surface_group.width;
+        this.universe.y = this.world.centerY - 50;
 
         this.input.keyboard.addCallbacks(this, null, function() {
             this.keyboard = true;
@@ -26,15 +29,19 @@ game.prototype = {
     update: function() {
         if (this.keyboard && this.input.keyboard.isDown(Phaser.Keyboard.LEFT)) {
             this.keyboard = false;
+            jump(this, 'left');
         }
         if (this.keyboard && this.input.keyboard.isDown(Phaser.Keyboard.RIGHT)) {
             this.keyboard = false;
+            jump(this, 'right');
         }
         if (this.keyboard && this.input.keyboard.isDown(Phaser.Keyboard.UP)) {
             this.keyboard = false;
+            jump(this, 'up');
         }
         if (this.keyboard && this.input.keyboard.isDown(Phaser.Keyboard.DOWN)) {
             this.keyboard = false;
+            jump(this, 'down');
         }
     }
 };
