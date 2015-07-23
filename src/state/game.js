@@ -4,9 +4,21 @@ var game = function(izojump) {
 game.prototype = {
     init: function(info) {
         this.universe = this.add.group();
+
         this.surface = {};
+
+        this.cursor = {};
+
         this.player = {};
         this.player_location = null;
+
+        this.target = {};
+        this.target = true;
+        this.target_location = null;
+        this.target_data = {
+            "tween": null,
+            "previous_target": null
+        };
 
         this.keyboard = true;
     },
@@ -16,6 +28,10 @@ game.prototype = {
         this.data = this.cache.getJSON('data');
 
         draw_surface(this);
+
+        draw_target(this);
+        move_target(this);
+
         draw_cursor(this);
         draw_player(this);
 

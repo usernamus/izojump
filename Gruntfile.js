@@ -9,7 +9,9 @@ module.exports = function(grunt) {
                         'src/state/game.js',
                         'src/action/jump.js',
                         'src/action/death.js',
+                        'src/action/move_target.js',
                         'src/draw/surface.js',
+                        'src/draw/target.js',
                         'src/draw/cursor.js',
                         'src/draw/player.js',
                         'src/izojump.js'
