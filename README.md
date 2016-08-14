@@ -1,9 +1,7 @@
-+![](izojump-sample.png)
-
 ## Installation
 
 ```
-$ npm i html-to-react-components
+$ npm i
 ```
 
 ## Usage
@@ -11,6 +9,8 @@ $ npm i html-to-react-components
 ```
 $ grunt connect
 ```
+
+![](izojump-sample.png)
 
 ## Play
 
